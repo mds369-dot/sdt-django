@@ -6,16 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="{% static 'css/output.css' %}">
+    <link rel="stylesheet" href="{% static 'css/output.css' %}">
 </head>
 <body>
     <h1>Welcome to the Authentication System</h1>
-    <div>    
+    <div>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="px-2 py-1 {% if message.tags == 'success' %}bg-green-500{% endif %} ">{{message}}</div>
+            {% endfor %}
+        {% endif %}
+        {% if form.non_field_errors %}
+            
+            {% for ferror in form.non_field_errors %}
+                {{ error }}
+            {% endfor %}
+                
+        {% endif %}
         <form method="POST">
             {% csrf_token %}
-            <input type="text" placeholder='Enter Your username' name='username'>
-            <input type="password" placeholder='Enter Your password' name='password'>
+            {{form}}
                 
-            <button type="submit">Sign In</button>
+            <button class='bg-blue-500 px-1 py-2 rounded-sm' type="submit">Sign In</button>
         </form>
     </div>
 </body>
