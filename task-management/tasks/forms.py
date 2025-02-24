@@ -22,6 +22,7 @@ class TaskForm(forms.Form):
 
 class StyledFormMixin:
     """ Mixing to apply style to form field"""
+
     def __init__(self, *arg, **kwarg):
         super().__init__(*arg, **kwarg)
         self.apply_styled_widgets()
@@ -74,6 +75,4 @@ class TaskModelForm(StyledFormMixin, forms.ModelForm):
 class TaskDetailModelForm(StyledFormMixin, forms.ModelForm):
     class Meta:
         model = TaskDetail
-        fields = ['assigned_to', 'priority', 'notes']
-
-    
+        fields = ['priority', 'notes']

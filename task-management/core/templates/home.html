@@ -6,8 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Welcome Home</h1>
-    
+    <h1>Welcome home</h1>
     {% if user.is_authenticated %}
         {{user}}
         <form action="{% url 'logout' %}" method="POST">
@@ -15,8 +14,9 @@
             <button type="submit">logout</button>
         </form>
     {% else %}
-        Anynonomus
+        Annonymous
     {% endif %}
-        
+    
+    
 </body>
 </html>
